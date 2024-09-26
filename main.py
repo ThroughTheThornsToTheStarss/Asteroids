@@ -20,7 +20,9 @@ def main() :
     Asteroid.containers = (asteroids, updatable, drawable)
     AsteroidField.containers = (updatable,)
     Shot.containers = (bullets, updatable, drawable) 
-   
+    background_image = pygame.image.load('background.jpg')
+    background_image = pygame.transform.scale(background_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
+    
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     asteroid_field = AsteroidField()
 
@@ -39,8 +41,8 @@ def main() :
         for obj in updatable:
             obj.update(dt)
            
-
-        screen.fill(THECOLORS['black'])
+        screen.blit(background_image, (0, 0))
+        #screen.fill(THECOLORS['black'])
 
         for obj in drawable:
             obj.draw(screen)
